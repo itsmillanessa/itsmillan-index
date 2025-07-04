@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>itsmillan | Cybersecurity Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #0f0f0f;
+      color: #33ff33;
+      font-family: 'Fira Code', monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 2px solid #33ff33;
+      margin-bottom: 1rem;
+    }
+    h1, h2 {
+      margin: 0;
+      padding: 0.2rem;
+      text-align: center;
+    }
+    .terminal {
+      background-color: #000000;
+      border: 1px solid #33ff33;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 0 20px #33ff33;
+    }
+    .command {
+      color: #33ff33;
+    }
+    .output a {
+      color: #33ff33;
+      text-decoration: none;
+      display: block;
+      margin: 0.2rem 0;
+    }
+    .output a:hover {
+      text-decoration: underline;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background-color: #33ff33;
+      animation: blink 1s infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <img src="FOTO-FORMAL.jpg" alt="Alexis Millan" />
+  <div class="terminal">
+    <h1>Hi, I’m Milán</h1>
+    <h2>Cybersecurity Engineer</h2>
+    <p class="command">> ls ~/portfolio</p>
+    <div class="output">
+      <a href="https://github.com/itsmillanessa" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexisamillan" target="_blank">LinkedIn</a>
+      <a href="https://techespresso.substack.com/" target="_blank">Tech Espresso (Blog)</a>
+      <a href="https://itsmillan.com/labs" target="_blank">Labs on AWS</a>
+      <a href="Alexis-Resume.pdf" target="_blank">Download CV</a>
+      <a href="mailto:aamillanv@gmail.com">Contact Me</a>
+    </div>
+    <span class="cursor"></span>
+  </div>
+</body>
+</html>
