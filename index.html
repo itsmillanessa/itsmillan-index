@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      background-color: #0f0f0f;
+      background-color: #000;
       color: #33ff33;
       font-family: 'Fira Code', monospace;
       display: flex;
@@ -17,6 +17,20 @@
       justify-content: center;
       min-height: 100vh;
       padding: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+    canvas#matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .content {
+      z-index: 1;
+      text-align: center;
     }
     img {
       width: 140px;
@@ -29,19 +43,17 @@
     h1, h2 {
       margin: 0;
       padding: 0.2rem;
-      text-align: center;
     }
     .intro {
       max-width: 600px;
-      text-align: center;
       margin-bottom: 2rem;
     }
     .terminal {
-      background-color: #000000;
+      background-color: #000000cc;
       border: 1px solid #33ff33;
       padding: 2rem;
       max-width: 600px;
-      width: 100%;
+      margin: 0 auto;
       box-shadow: 0 0 20px #33ff33;
     }
     .command {
@@ -71,22 +83,57 @@
   </style>
 </head>
 <body>
-  <img src="F956F7A9-B559-48CE-B1F0-036E1555438F.png" alt="Alexis Millan" />
-  <div class="intro">
-    <h1>Hi, I’m Milán</h1>
-    <h2>Cybersecurity Engineer</h2>
-    <p>Welcome to my digital terminal — a minimalistic hub where I share my work, labs, and contact details. I'm passionate about helping organizations improve their security posture through threat detection, attack surface management, and hands-on security engineering.</p>
-  </div>
-  <div class="terminal">
-    <p class="command">> ls ~/portfolio</p>
-    <div class="output">
-      <a href="https://github.com/itsmillanessa" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/alexisamillan" target="_blank">LinkedIn</a>
-      <a href="https://itsmillan.com/labs" target="_blank">Labs on AWS</a>
-      <a href="Alexis-Resume.pdf" target="_blank">Download CV</a>
-      <a href="mailto:aamillanv@gmail.com">Contact Me</a>
+  <canvas id="matrix"></canvas>
+  <div class="content">
+    <img src="F956F7A9-B559-48CE-B1F0-036E1555438F.png" alt="Alexis Millan" />
+    <div class="intro">
+      <h1>Hi, I’m Milán</h1>
+      <h2>Cybersecurity Engineer</h2>
+      <p>Welcome to my digital terminal — a minimalistic hub where I share my work, labs, and contact details. I'm passionate about helping organizations improve their security posture through threat detection, attack surface management, and hands-on security engineering.</p>
     </div>
-    <span class="cursor"></span>
+    <div class="terminal">
+      <p class="command">> ls ~/portfolio</p>
+      <div class="output">
+        <a href="https://github.com/itsmillanessa" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/alexisamillan" target="_blank">LinkedIn</a>
+        <a href="https://itsmillan.com/labs" target="_blank">Labs on AWS</a>
+        <a href="Alexis-Resume.pdf" target="_blank">Download CV</a>
+        <a href="mailto:aamillanv@gmail.com">Contact Me</a>
+      </div>
+      <span class="cursor"></span>
+    </div>
   </div>
+  <script>
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = '01';
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#33ff33';
+      ctx.font = fontSize + 'px Fira Code';
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters[Math.floor(Math.random() * letters.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 35);
+    window.addEventListener('resize', () => location.reload());
+  </script>
 </body>
 </html>
