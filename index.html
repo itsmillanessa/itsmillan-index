@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      background-color: #000;
+      background-color: #0f0f0f;
       color: #33ff33;
       font-family: 'Fira Code', monospace;
       display: flex;
@@ -20,13 +20,13 @@
       overflow: hidden;
       position: relative;
     }
-    canvas#matrix {
+    #particles-js {
       position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 0;
       width: 100%;
       height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
     }
     .content {
       z-index: 1;
@@ -83,9 +83,9 @@
   </style>
 </head>
 <body>
-  <canvas id="matrix"></canvas>
+  <div id="particles-js"></div>
   <div class="content">
-    <img src="photo.png" alt="Alexis Millan" />
+    <img src="F956F7A9-B559-48CE-B1F0-036E1555438F.png" alt="Alexis Millan" />
     <div class="intro">
       <h1>Hi, I’m Milán</h1>
       <h2>Cybersecurity Engineer</h2>
@@ -103,37 +103,80 @@
       <span class="cursor"></span>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-
-    canvas.height = window.innerHeight;
-    canvas.width = window.innerWidth;
-
-    const letters = '01';
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const drops = Array(Math.floor(columns)).fill(1);
-
-    function drawMatrix() {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = '#33ff33';
-      ctx.font = fontSize + 'px Fira Code';
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
+    particlesJS("particles-js", {
+      "particles": {
+        "number": {
+          "value": 80,
+          "density": {
+            "enable": true,
+            "value_area": 800
+          }
+        },
+        "color": {
+          "value": "#bbbbbb"
+        },
+        "shape": {
+          "type": "circle",
+          "stroke": {
+            "width": 0,
+            "color": "#000000"
+          },
+          "polygon": {
+            "nb_sides": 5
+          }
+        },
+        "opacity": {
+          "value": 0.3,
+          "random": true,
+          "anim": {
+            "enable": false
+          }
+        },
+        "size": {
+          "value": 3,
+          "random": true
+        },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#777",
+          "opacity": 0.4,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.5,
+          "direction": "none",
+          "random": true,
+          "straight": false,
+          "out_mode": "out"
         }
-        drops[i]++;
-      }
-    }
-
-    setInterval(drawMatrix, 35);
-    window.addEventListener('resize', () => location.reload());
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": {
+            "enable": true,
+            "mode": "grab"
+          },
+          "onclick": {
+            "enable": false
+          },
+          "resize": true
+        },
+        "modes": {
+          "grab": {
+            "distance": 140,
+            "line_linked": {
+              "opacity": 0.5
+            }
+          }
+        }
+      },
+      "retina_detect": true
+    });
   </script>
 </body>
 </html>
