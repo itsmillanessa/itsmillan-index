@@ -11,14 +11,7 @@
       background-color: #0f0f0f;
       color: #ffffff;
       font-family: 'Fira Code', monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 2rem;
       overflow: hidden;
-      position: relative;
     }
     #particles-js {
       position: fixed;
@@ -28,39 +21,70 @@
       top: 0;
       left: 0;
     }
-    .content {
-      z-index: 1;
-      text-align: center;
+    header {
+      background-color: #1c1c2a;
+      padding: 1rem;
+      color: #7cb1ff;
+      font-size: 1.2rem;
+      text-align: left;
+      padding-left: 2rem;
+      border-bottom: 1px solid #333;
+      z-index: 2;
+      position: relative;
     }
-    img {
-      width: 140px;
-      height: 140px;
+    .container {
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 60px);
+      padding: 2rem;
+      position: relative;
+    }
+    .profile {
+      flex: 1;
+      text-align: center;
+      padding: 2rem;
+    }
+    .profile img {
+      width: 180px;
+      height: 180px;
       object-fit: cover;
       border-radius: 50%;
       border: 2px solid #ffffff;
-      margin-bottom: 1rem;
     }
-    h1, h2 {
-      margin: 0;
-      padding: 0.2rem;
+    .profile h1 {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      color: #baff80;
     }
-    .intro {
+    .profile h2 {
+      font-size: 1rem;
+      color: #ff4f4f;
+      font-weight: normal;
+    }
+    .summary {
+      flex: 2;
+      color: #e0d5f5;
+      padding: 2rem;
       max-width: 600px;
-      margin-bottom: 2rem;
+    }
+    .summary h3 {
+      color: #ff88dd;
     }
     .buttons {
+      margin-top: 1.5rem;
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      max-width: 300px;
-      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
     .buttons a {
       background-color: #1a1a1a;
       color: #ffffff;
       border: 1px solid #888;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
       text-decoration: none;
       transition: all 0.3s ease;
     }
@@ -73,19 +97,25 @@
 </head>
 <body>
   <div id="particles-js"></div>
-  <div class="content">
-    <img src="photo.png" alt="Alexis Millan" />
-    <div class="intro">
-      <h1>Hi, I’m Alexis Millan</h1>
+  <header>> Milán Millán | Cybersecurity Engineer_</header>
+  <div class="container">
+    <div class="profile">
+      <img src="AF9D961E-995E-4C00-AA22-C8D03959C551.png" alt="Milán" />
+      <h1>Milán Millán</h1>
       <h2>Cybersecurity Engineer</h2>
-      <p>Welcome to my digital terminal — a minimalistic hub where I share my work, labs, and contact details. I'm passionate about helping organizations improve their security posture through threat detection, attack surface management, and hands-on security engineering.</p>
     </div>
-    <div class="buttons">
-      <a href="https://github.com/itsmillanessa" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/alexisamillan" target="_blank">LinkedIn</a>
-      <a href="https://itsmillan.com/labs" target="_blank">Labs on AWS</a>
-      <a href="Alexis-Resume.pdf" target="_blank">Download CV</a>
-      <a href="mailto:aamillanv@gmail.com">Contact Me</a>
+    <div class="summary">
+      <h3>Debug.Log("Hello there!");</h3>
+      <p>
+        I'm a cybersecurity engineer focused on building secure architectures and improving detection capabilities across enterprise environments. I enjoy working hands-on with security tools, helping teams reduce attack surfaces and implement threat-informed strategies.
+      </p>
+      <div class="buttons">
+        <a href="https://github.com/itsmillanessa" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/alexisamillan" target="_blank">LinkedIn</a>
+        <a href="https://itsmillan.com/labs" target="_blank">Labs on AWS</a>
+        <a href="Alexis-Resume.pdf" target="_blank">Download CV</a>
+        <a href="mailto:aamillanv@gmail.com">Contact Me</a>
+      </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -114,10 +144,7 @@
         },
         "opacity": {
           "value": 0.3,
-          "random": true,
-          "anim": {
-            "enable": false
-          }
+          "random": true
         },
         "size": {
           "value": 3,
