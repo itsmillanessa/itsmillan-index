@@ -9,7 +9,7 @@
     body {
       margin: 0;
       background-color: #0f0f0f;
-      color: #33ff33;
+      color: #ffffff;
       font-family: 'Fira Code', monospace;
       display: flex;
       flex-direction: column;
@@ -37,7 +37,7 @@
       height: 140px;
       object-fit: cover;
       border-radius: 50%;
-      border: 2px solid #33ff33;
+      border: 2px solid #ffffff;
       margin-bottom: 1rem;
     }
     h1, h2 {
@@ -48,37 +48,26 @@
       max-width: 600px;
       margin-bottom: 2rem;
     }
-    .terminal {
-      background-color: #000000cc;
-      border: 1px solid #33ff33;
-      padding: 2rem;
-      max-width: 600px;
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 300px;
       margin: 0 auto;
-      box-shadow: 0 0 20px #33ff33;
     }
-    .command {
-      color: #33ff33;
-    }
-    .output a {
-      color: #33ff33;
+    .buttons a {
+      background-color: #1a1a1a;
+      color: #ffffff;
+      border: 1px solid #888;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
       text-decoration: none;
-      display: block;
-      margin: 0.2rem 0;
+      transition: all 0.3s ease;
     }
-    .output a:hover {
-      text-decoration: underline;
-    }
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 20px;
+    .buttons a:hover {
       background-color: #33ff33;
-      animation: blink 1s infinite;
-      margin-left: 2px;
-    }
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
+      color: #0f0f0f;
+      border-color: #33ff33;
     }
   </style>
 </head>
@@ -91,16 +80,12 @@
       <h2>Cybersecurity Engineer</h2>
       <p>Welcome to my digital terminal — a minimalistic hub where I share my work, labs, and contact details. I'm passionate about helping organizations improve their security posture through threat detection, attack surface management, and hands-on security engineering.</p>
     </div>
-    <div class="terminal">
-      <p class="command">> ls ~/portfolio</p>
-      <div class="output">
-        <a href="https://github.com/itsmillanessa" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/alexisamillan" target="_blank">LinkedIn</a>
-        <a href="https://itsmillan.com/labs" target="_blank">Labs on AWS</a>
-        <a href="Alexis-Resume.pdf" target="_blank">Download CV</a>
-        <a href="mailto:aamillanv@gmail.com">Contact Me</a>
-      </div>
-      <span class="cursor"></span>
+    <div class="buttons">
+      <a href="https://github.com/itsmillanessa" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/alexisamillan" target="_blank">LinkedIn</a>
+      <a href="https://itsmillan.com/labs" target="_blank">Labs on AWS</a>
+      <a href="Alexis-Resume.pdf" target="_blank">Download CV</a>
+      <a href="mailto:aamillanv@gmail.com">Contact Me</a>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
