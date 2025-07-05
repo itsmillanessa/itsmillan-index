@@ -11,7 +11,7 @@
       background-color: #0f0f0f;
       color: #ffffff;
       font-family: 'Fira Code', monospace;
-      overflow: hidden;
+      overflow-x: hidden;
     }
     #particles-js {
       position: fixed;
@@ -36,20 +36,21 @@
       z-index: 1;
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: center;
       align-items: center;
       min-height: calc(100vh - 60px);
       padding: 2rem;
       position: relative;
     }
-    .profile {
-      flex: 1;
+    .profile, .summary {
+      flex: 1 1 300px;
       text-align: center;
-      padding: 2rem;
+      padding: 1rem;
     }
     .profile img {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       object-fit: cover;
       border-radius: 50%;
       border: 2px solid #ffffff;
@@ -64,19 +65,19 @@
       color: #ff4f4f;
       font-weight: normal;
     }
-    .summary {
-      flex: 2;
-      color: #e0d5f5;
-      padding: 2rem;
-      max-width: 600px;
-    }
     .summary h3 {
       color: #ff4f4f;
+    }
+    .summary p {
+      color: #e0d5f5;
+      max-width: 500px;
+      margin: 0 auto;
     }
     .buttons {
       margin-top: 1.5rem;
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       gap: 1rem;
     }
     .buttons a {
@@ -86,12 +87,21 @@
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
       text-decoration: none;
+      width: 100%;
+      max-width: 280px;
       transition: all 0.3s ease;
+      text-align: center;
     }
     .buttons a:hover {
       background-color: #33ff33;
       color: #0f0f0f;
       border-color: #33ff33;
+    }
+    @media screen and (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
@@ -100,12 +110,12 @@
   <header>> Alexis Millán | Cybersecurity Engineer_</header>
   <div class="container">
     <div class="profile">
-      <img src="photo.png" alt="Millán" />
-      <h1>Alexis Millán</h1>
+      <img src="AF9D961E-995E-4C00-AA22-C8D03959C551.png" alt="Milán" />
+      <h1>Milán Millán</h1>
       <h2>Cybersecurity Engineer</h2>
     </div>
     <div class="summary">
-      <h3 style="color: #ff4f4f;">Debug.Log("Hello there!");</h3>
+      <h3 style="color: #ff4f4f;">Welcome</h3>
       <p>
         I'm a cybersecurity engineer focused on building secure architectures and improving detection capabilities across enterprise environments. I enjoy working hands-on with security tools, helping teams reduce attack surfaces and implement threat-informed strategies.
       </p>
