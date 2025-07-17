@@ -604,7 +604,7 @@
                         const response = await fetch('https://www.virustotal.com/vtapi/v2/url/report', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            body: `apikey=YOUR_API_KEY&resource=${encodeURIComponent(value)}`
+                            body: `apikey=4a5fe303acd173ea44fd039994499783cabbf2e043184de3999b05bde6c34282&resource=${encodeURIComponent(value)}`
                         });
                         const data = await response.json();
                         return this.parseVirusTotalResults(data, value, type);
@@ -612,7 +612,7 @@
                         const response = await fetch('https://www.virustotal.com/vtapi/v2/file/report', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            body: `apikey=YOUR_API_KEY&resource=${value}`
+                            body: `apikey=4a5fe303acd173ea44fd039994499783cabbf2e043184de3999b05bde6c34282&resource=${value}`
                         });
                         const data = await response.json();
                         return this.parseVirusTotalResults(data, value, type);
@@ -620,7 +620,7 @@
                         const response = await fetch('https://www.virustotal.com/vtapi/v2/ip-address/report', {
                             method: 'GET',
                             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                            body: `apikey=YOUR_API_KEY&ip=${value}`
+                            body: `apikey=4a5fe303acd173ea44fd039994499783cabbf2e043184de3999b05bde6c34282&ip=${value}`
                         });
                         const data = await response.json();
                         return this.parseVirusTotalResults(data, value, type);
