@@ -443,7 +443,7 @@
         <!-- Original Content -->
         <div class="main-content">
             <div class="profile-section">
-                <img src=https://github.com/itsmillanessa/itsmillan-index/blob/main/photo.png>
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Ccircle cx='75' cy='75' r='70' fill='%23333'/%3E%3Ctext x='75' y='80' text-anchor='middle' font-size='14' fill='%23fff'%3EYour Photo%3C/text%3E%3C/svg%3E" alt="Alexis Millán" class="profile-image">
                 
                 <h1 class="name">Alexis Millán</h1>
                 <p class="title">Cybersecurity Engineer</p>
@@ -597,15 +597,87 @@
             }
 
             async performValidation(value, type) {
-                // Simulate API delay
+                // Option 1: Use real VirusTotal API (replace YOUR_API_KEY with actual key)
+                /*
+                try {
+                    if (type === 'url' || type === 'domain') {
+                        const response = await fetch('https://www.virustotal.com/vtapi/v2/url/report', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                            body: `apikey=YOUR_API_KEY&resource=${encodeURIComponent(value)}`
+                        });
+                        const data = await response.json();
+                        return this.parseVirusTotalResults(data, value, type);
+                    } else if (type === 'hash') {
+                        const response = await fetch('https://www.virustotal.com/vtapi/v2/file/report', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                            body: `apikey=YOUR_API_KEY&resource=${value}`
+                        });
+                        const data = await response.json();
+                        return this.parseVirusTotalResults(data, value, type);
+                    } else if (type === 'ip') {
+                        const response = await fetch('https://www.virustotal.com/vtapi/v2/ip-address/report', {
+                            method: 'GET',
+                            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                            body: `apikey=YOUR_API_KEY&ip=${value}`
+                        });
+                        const data = await response.json();
+                        return this.parseVirusTotalResults(data, value, type);
+                    }
+                } catch (error) {
+                    console.error('API Error:', error);
+                    // Fall back to simulation on API error
+                }
+                */
+                
+                // Option 2: Use simulation (current default)
                 await this.delay(2000 + Math.random() * 1000);
-                
-                // Here you would integrate with real APIs like:
-                // - VirusTotal API: https://developers.virustotal.com/reference
-                // - URLVoid API: https://www.urlvoid.com/api/
-                // - AbuseIPDB API: https://www.abuseipdb.com/api
-                
                 return this.generateSimulatedResults(value, type);
+            }
+            
+            parseVirusTotalResults(data, value, type) {
+                // Parse real VirusTotal API responses
+                const positives = data.positives || 0;
+                const total = data.total || 70;
+                const isClean = positives === 0;
+                const isSuspicious = positives > 0 && positives < 5;
+                const isMalicious = positives >= 5;
+                
+                const baseResults = {
+                    target: value,
+                    type: type,
+                    scanDate: new Date().toLocaleString(),
+                    overall: isMalicious ? 'malicious' : (isSuspicious ? 'suspicious' : 'clean')
+                };
+                
+                switch (type) {
+                    case 'url':
+                    case 'domain':
+                        return {
+                            ...baseResults,
+                            reputation: isMalicious ? 'Poor' : (isSuspicious ? 'Questionable' : 'Good'),
+                            category: 'Unknown',
+                            blocklists: positives,
+                            sslValid: true
+                        };
+                    case 'ip':
+                        return {
+                            ...baseResults,
+                            country: data.country || 'Unknown',
+                            asn: data.asn || 'Unknown',
+                            provider: data.as_owner || 'Unknown',
+                            blocklists: positives
+                        };
+                    case 'hash':
+                        return {
+                            ...baseResults,
+                            hashType: value.length === 32 ? 'MD5' : (value.length === 40 ? 'SHA1' : 'SHA256'),
+                            fileType: data.file_type || 'Unknown',
+                            detections: positives,
+                            totalEngines: total
+                        };
+                }
             }
 
             generateSimulatedResults(value, type) {
