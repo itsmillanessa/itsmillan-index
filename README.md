@@ -1,3 +1,3 @@
 # itsmillan.com
 
-Sampler Landing page
+Sampler Landing page for presentation
